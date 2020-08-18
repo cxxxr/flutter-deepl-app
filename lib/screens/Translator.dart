@@ -16,7 +16,7 @@ class Translator extends StatefulWidget {
 class _TranslatorState extends State<Translator> {
   Future<Translation> future;
 
-  void translateTextField() async {
+  void _translateTextField() async {
     setState(() {
       future =
           deepl.translateText(widget.authCode, widget.controller.text, "ja");
@@ -37,7 +37,7 @@ class _TranslatorState extends State<Translator> {
               maxLines: null,
             ),
             RaisedButton(
-              onPressed: translateTextField,
+              onPressed: _translateTextField,
               child: Text('翻訳'),
             ),
             if (snapshot.connectionState == ConnectionState.waiting)
