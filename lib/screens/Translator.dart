@@ -19,7 +19,7 @@ class _TranslatorState extends State<Translator> {
   void _translateTextField() async {
     setState(() {
       future =
-          deepl.translateText(widget.authCode, widget.controller.text, "ja");
+          deepl.translateText(widget.authCode, widget.controller.text, 'ja');
     });
   }
 
