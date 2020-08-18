@@ -13,26 +13,26 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-enum Seen {
+enum _Seen {
   login,
   main,
 }
 
 class _HomeState extends State<Home> {
-  Seen seen = Seen.login;
+  _Seen seen = _Seen.login;
 
   void didUpdateWidget(Widget oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.authCode != null) {
-      seen = Seen.main;
+      seen = _Seen.main;
     }
   }
 
   String _seenTitle() {
     switch (seen) {
-      case Seen.login:
+      case _Seen.login:
         return '認証';
-      case Seen.main:
+      case _Seen.main:
         return 'DeepL';
       default:
         throw Exception('unexpected seen: $seen');
@@ -41,9 +41,9 @@ class _HomeState extends State<Home> {
 
   Widget _seenBody() {
     switch (seen) {
-      case Seen.login:
+      case _Seen.login:
         return Login(onLogin: _handleLogin);
-      case Seen.main:
+      case _Seen.main:
         return Translator(authCode: widget.authCode);
       default:
         throw Exception('unexpected seen: $seen');
@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
   void _handleLogin(String authCode) {
     AuthCodeStorage().save(authCode);
     setState(() {
-      seen = Seen.main;
+      seen = _Seen.main;
     });
   }
 
