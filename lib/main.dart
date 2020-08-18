@@ -78,7 +78,7 @@ class _DeepLHomeState extends State<DeepLHome> {
       case Seen.login:
         return Login(onLogin: _handleLogin);
       case Seen.main:
-        return DeepLTranslator(authCode: widget.authCode);
+        return Translator(authCode: widget.authCode);
       default:
         throw Exception('unexpected seen: $seen');
     }
@@ -195,17 +195,17 @@ class _LoginState extends State<Login> {
   }
 }
 
-class DeepLTranslator extends StatefulWidget {
+class Translator extends StatefulWidget {
   final String authCode;
   final TextEditingController controller = TextEditingController();
 
-  DeepLTranslator({key, this.authCode}) : super(key: key);
+  Translator({key, this.authCode}) : super(key: key);
 
   @override
-  _DeepLTranslatorState createState() => _DeepLTranslatorState();
+  _TranslatorState createState() => _TranslatorState();
 }
 
-class _DeepLTranslatorState extends State<DeepLTranslator> {
+class _TranslatorState extends State<Translator> {
   Future<Translation> future;
 
   void translateTextField() async {
