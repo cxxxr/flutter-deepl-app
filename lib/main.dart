@@ -10,10 +10,8 @@ void main() async {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    const title = 'DeepL';
-
     return MaterialApp(
-      title: title,
+      title: 'DeepL',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
